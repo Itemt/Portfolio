@@ -7,7 +7,7 @@ const Hero = () => {
       <div className="container">
         <div className="max-w-3xl animate-slide-up">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Developer & Designer
+            Developer
           </h1>
           <p className="text-xl text-mono-text-secondary mb-8 max-w-2xl">
             I build exceptional digital experiences that are fast, accessible, and designed with best practices.
