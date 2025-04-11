@@ -2,8 +2,16 @@
 import React from 'react';
 import SkillItem from './SkillItem';
 import { Database, Globe, Server, Code, Layout, PenTool, Package, FileCode, CreditCard } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const SkillsSection = () => {
+  const { language } = useLanguage();
+  
+  const sectionTitle = {
+    en: "Skills & Technologies",
+    es: "Habilidades y Tecnologías"
+  };
+
   const skills = [
     { name: 'Next.js', icon: <Globe /> },
     { name: 'React', icon: <Code /> },
@@ -19,7 +27,7 @@ const SkillsSection = () => {
   return (
     <section className="py-20" id="skills">
       <div className="container">
-        <h2 className="text-3xl font-bold mb-8">Habilidades y Tecnologías</h2>
+        <h2 className="text-3xl font-bold mb-8">{sectionTitle[language]}</h2>
         
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {skills.map((skill) => (

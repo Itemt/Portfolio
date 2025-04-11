@@ -1,17 +1,36 @@
 
 import React from 'react';
 import { Github, Linkedin, Mail } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
+  const { language } = useLanguage();
+
+  const texts = {
+    en: {
+      contact: "Contact",
+      contactDescription: "I am currently available for freelance work and full-time positions. If you have a project that needs creative engineering, I would love to hear more about it.",
+      connect: "Connect",
+      footerNote: "Developed with React, TypeScript, and TailwindCSS"
+    },
+    es: {
+      contact: "Contacto",
+      contactDescription: "Actualmente estoy disponible para trabajo freelance y posiciones a tiempo completo. Si tienes un proyecto que necesita ingeniería creativa, me encantaría saber más.",
+      connect: "Conectar",
+      footerNote: "Desarrollado con React, TypeScript, y TailwindCSS"
+    }
+  };
+
+  const t = texts[language];
+
   return (
     <footer className="py-12 border-t border-mono-border mt-24" id="contact">
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
-            <h2 className="text-2xl font-bold mb-4">Contacto</h2>
+            <h2 className="text-2xl font-bold mb-4">{t.contact}</h2>
             <p className="text-mono-text-secondary mb-6">
-              Actualmente estoy disponible para trabajo freelance y posiciones a tiempo completo.
-              Si tienes un proyecto que necesita ingeniería creativa, me encantaría saber más.
+              {t.contactDescription}
             </p>
             <a
               href="mailto:contact@example.com"
@@ -23,7 +42,7 @@ const Footer = () => {
           </div>
           
           <div>
-            <h2 className="text-2xl font-bold mb-4">Conectar</h2>
+            <h2 className="text-2xl font-bold mb-4">{t.connect}</h2>
             <div className="flex space-x-4">
               <a 
                 href="https://github.com" 
@@ -52,7 +71,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-12 pt-6 border-t border-mono-border text-center text-mono-text-secondary">
-          <p>© {new Date().getFullYear()} - Desarrollado con React, TypeScript, y TailwindCSS</p>
+          <p>© {new Date().getFullYear()} - {t.footerNote}</p>
         </div>
       </div>
     </footer>

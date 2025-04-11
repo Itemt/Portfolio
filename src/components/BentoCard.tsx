@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface BentoCardProps {
   title: string;
@@ -21,6 +22,13 @@ const BentoCard = ({
   className,
   imageUrl,
 }: BentoCardProps) => {
+  const { language } = useLanguage();
+  
+  const viewProjectText = {
+    en: "View Project →",
+    es: "Ver Proyecto →"
+  };
+
   return (
     <div
       className={cn(
@@ -62,7 +70,7 @@ const BentoCard = ({
               rel="noopener noreferrer"
               className="text-mono-accent underline underline-offset-2 hover:text-mono-text transition-colors"
             >
-              Ver Proyecto →
+              {viewProjectText[language]}
             </a>
           )}
         </div>
