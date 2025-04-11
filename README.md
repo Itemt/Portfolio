@@ -1,73 +1,61 @@
-# Welcome to your Lovable project
+```markdown
+# Portafolio Web 💼
 
-## Project info
+Este proyecto es un portafolio web desarrollado con el objetivo de mostrar mis habilidades, proyectos y experiencia como desarrollador.  
+Está construido con tecnologías modernas y un diseño responsivo para asegurar una experiencia óptima en todos los dispositivos.
 
-**URL**: https://lovable.dev/projects/90ff8b0b-58a9-4c6e-a879-756858c2ff0b
+## 🌐 Tecnologías utilizadas
 
-## How can I edit this code?
+- HTML5
+- CSS3
+- JavaScript
+- [Bootstrap](https://getbootstrap.com/) (para diseño responsivo)
 
-There are several ways of editing your application.
+## ✨ Características
 
-**Use Lovable**
+- Página de inicio con presentación profesional.
+- Sección sobre mí: información personal y habilidades.
+- Sección de proyectos: listado de proyectos realizados, con enlaces a GitHub y vistas previas.
+- Sección de contacto: formulario funcional y enlaces a redes sociales.
+- Diseño limpio, moderno y responsivo.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/90ff8b0b-58a9-4c6e-a879-756858c2ff0b) and start prompting.
+## 📁 Estructura del Proyecto
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```plaintext
+📁 Portfolio/
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   └── script.js
+├── assets/
+│   └── imágenes, íconos, etc.
+└── README.md
 ```
 
-**Edit a file directly in GitHub**
+## 🚀 Cómo usar
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. Clona este repositorio:
 
-**Use GitHub Codespaces**
+   ```bash
+   git clone https://github.com/Itemt/Portfolio.git
+   ```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+2. Abre el archivo `index.html` en tu navegador para visualizar el sitio web.
 
-## What technologies are used for this project?
+3. Personaliza el contenido con tu información personal, proyectos, habilidades y enlaces.
 
-This project is built with .
+## 📌 Sugerencias
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- Puedes desplegar tu portafolio en GitHub Pages para hacerlo público fácilmente.
+- Agrega animaciones con JavaScript o librerías como AOS.js para una experiencia más dinámica.
+- Mejora la accesibilidad siguiendo buenas prácticas de HTML semántico.
 
-## How can I deploy this project?
+## 📄 Licencia
 
-Simply open [Lovable](https://lovable.dev/projects/90ff8b0b-58a9-4c6e-a879-756858c2ff0b) and click on Share -> Publish.
+Este proyecto está bajo la Licencia MIT.
 
-## Can I connect a custom domain to my Lovable project?
+---
 
-Yes it is!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+✉️ Si quieres sugerencias para mejorar tu portafolio o agregar nuevas secciones como certificaciones, experiencias laborales o blog, ¡estoy aquí para ayudarte!
+```
