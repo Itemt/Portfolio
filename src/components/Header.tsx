@@ -52,7 +52,7 @@ const Header = () => {
             <Button 
               variant="outline" 
               size="sm" 
-              className="flex items-center gap-2" 
+              className="flex items-center gap-2 text-mono-background bg-mono-text hover:bg-mono-accent hover:text-mono-background" 
               onClick={toggleLanguage}
             >
               <Globe size={16} />
