@@ -62,7 +62,7 @@ const BentoCard = ({
               rel="noopener noreferrer"
               className="text-mono-accent underline underline-offset-2 hover:text-mono-text transition-colors"
             >
-              View Project →
+              Ver Proyecto →
             </a>
           )}
         </div>

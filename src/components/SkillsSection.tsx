@@ -19,7 +19,7 @@ const SkillsSection = () => {
   return (
     <section className="py-20" id="skills">
       <div className="container">
-        <h2 className="text-3xl font-bold mb-8">Skills & Technologies</h2>
+        <h2 className="text-3xl font-bold mb-8">Habilidades y Tecnologías</h2>
         
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
           {skills.map((skill) => (
