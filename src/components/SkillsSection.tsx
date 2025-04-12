@@ -1,7 +1,7 @@
 
 import React from 'react';
 import SkillItem from './SkillItem';
-import { Database, Globe, Server, Code, Layout, PenTool, Package, FileCode, CreditCard } from 'lucide-react';
+import { Database, Globe, Server, Code, Layout, PenTool, Package, FileCode, CreditCard, Terminal, Library } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const SkillsSection = () => {
@@ -27,6 +27,8 @@ const SkillsSection = () => {
     { name: 'UI/UX', icon: <PenTool /> },
     { name: 'Tailwind CSS', icon: <Layout /> },
     { name: 'Stripe', icon: <CreditCard /> },
+    { name: 'Python', icon: <Terminal /> },
+    { name: '.NET', icon: <Library /> },
   ];
 
   return (

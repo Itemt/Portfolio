@@ -40,14 +40,20 @@ const BentoCard = ({
         className
       )}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-mono-card/70 to-transparent z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-mono-card/70 via-mono-card/60 to-transparent z-10"></div>
       
       {imageUrl && (
-        <div className="absolute inset-0 opacity-15 group-hover:opacity-20 transition-opacity">
+        <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-300">
           <img 
             src={imageUrl} 
             alt={title} 
             className="object-cover w-full h-full rounded-xl" 
+            loading="lazy"
+            onError={(e) => {
+              // Fallback if image fails to load
+              const target = e.target as HTMLImageElement;
+              target.src = `https://opengraph.githubassets.com/1/Itemt/${title}`;
+            }}
           />
         </div>
       )}
