@@ -37,7 +37,7 @@
   }
 
   body {
-    @apply bg-mono-background text-mono-text bg-gradient-to-br from-[#121212] to-[#1a1a24] min-h-screen;
+    @apply bg-mono-background text-mono-text bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f3460] min-h-screen;
   }
   
   html {
@@ -82,7 +82,7 @@
   }
   
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-mono-accent to-[#9b87f5];
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#e0c3fc] to-[#8ec5fc];
   }
   
   .glow {

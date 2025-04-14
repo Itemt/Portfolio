@@ -44,36 +44,97 @@ const fetchGithubRepos = async () => {
 
 // Helper function to get a themed image URL based on repository content
 const getRepoImageUrl = (repo: Repository) => {
-  // Default image if we can't determine a more specific one
-  const defaultImage = `https://opengraph.githubassets.com/1/Itemt/${repo.name}`;
+  // If no repo information, return a generic coding image
+  if (!repo) return 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop';
   
-  // If no readme, return default
-  if (!repo.readme) return defaultImage;
+  const defaultImage = 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop';
   
-  const readme = repo.readme.toLowerCase();
+  // Check repository content to determine the most relevant image
+  const readme = repo.readme?.toLowerCase() || '';
   const topics = repo.topics?.map(t => t.toLowerCase()) || [];
   const repoName = repo.name.toLowerCase();
+  const language = repo.language?.toLowerCase() || '';
   
-  // Check for specific technologies in readme or topics to determine image theme
-  if (readme.includes('react') || topics.includes('react') || repoName.includes('react')) {
-    return 'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?q=80&w=1000&auto=format&fit=crop';
-  } else if (readme.includes('python') || topics.includes('python') || repoName.includes('python')) {
-    return 'https://images.unsplash.com/photo-1526379095098-d400fd0bf935?q=80&w=1000&auto=format&fit=crop';
-  } else if (readme.includes('node') || topics.includes('node') || repoName.includes('node')) {
-    return 'https://images.unsplash.com/photo-1539946309076-4daf2ea73899?q=80&w=1000&auto=format&fit=crop';
-  } else if (readme.includes('typescript') || topics.includes('typescript') || repoName.includes('typescript')) {
-    return 'https://images.unsplash.com/photo-1613490901527-33d1cfbbf0d9?q=80&w=1000&auto=format&fit=crop';
-  } else if (readme.includes('docker') || topics.includes('docker') || repoName.includes('docker')) {
-    return 'https://images.unsplash.com/photo-1605745341112-85968b19335b?q=80&w=1000&auto=format&fit=crop';
-  } else if (readme.includes('database') || readme.includes('sql') || topics.includes('database') || topics.includes('sql')) {
-    return 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=1000&auto=format&fit=crop';
-  } else if (readme.includes('web') || topics.includes('web') || repoName.includes('web')) {
-    return 'https://images.unsplash.com/photo-1618477247222-acbdb0e159b3?q=80&w=1000&auto=format&fit=crop';
-  } else if (readme.includes('api') || topics.includes('api') || repoName.includes('api')) {
-    return 'https://images.unsplash.com/photo-1623282033815-40b05d96c903?q=80&w=1000&auto=format&fit=crop';
+  // Technology-specific images
+  if (
+    readme.includes('react') || 
+    topics.includes('react') || 
+    repoName.includes('react')
+  ) {
+    return 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=1000&auto=format&fit=crop';
+  } 
+  
+  if (
+    readme.includes('python') || 
+    topics.includes('python') || 
+    repoName.includes('python') || 
+    language === 'python'
+  ) {
+    return 'https://images.unsplash.com/photo-1649180556628-9ba704115795?q=80&w=1000&auto=format&fit=crop';
+  } 
+  
+  if (
+    readme.includes('node') || 
+    topics.includes('node') || 
+    repoName.includes('node') ||
+    language === 'javascript'
+  ) {
+    return 'https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=1000&auto=format&fit=crop';
+  } 
+  
+  if (
+    readme.includes('typescript') || 
+    topics.includes('typescript') || 
+    repoName.includes('typescript') ||
+    language === 'typescript'
+  ) {
+    return 'https://images.unsplash.com/photo-1599507593499-a3f7d7d97667?q=80&w=1000&auto=format&fit=crop';
+  } 
+  
+  if (
+    readme.includes('docker') || 
+    topics.includes('docker') || 
+    repoName.includes('docker')
+  ) {
+    return 'https://images.unsplash.com/photo-1600267185393-e158a98703de?q=80&w=1000&auto=format&fit=crop';
+  } 
+  
+  if (
+    readme.includes('database') || 
+    readme.includes('sql') || 
+    topics.includes('database') || 
+    topics.includes('sql')
+  ) {
+    return 'https://images.unsplash.com/photo-1654277041218-84424c78f0ae?q=80&w=1000&auto=format&fit=crop';
+  } 
+  
+  if (
+    readme.includes('.net') || 
+    topics.includes('.net') || 
+    repoName.includes('.net') ||
+    language === 'c#'
+  ) {
+    return 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000&auto=format&fit=crop';
   }
   
-  // If no specific match found, return the default GitHub image
+  if (
+    readme.includes('web') || 
+    topics.includes('web') || 
+    repoName.includes('web') ||
+    language === 'html'
+  ) {
+    return 'https://images.unsplash.com/photo-1581276879432-15e50529f34b?q=80&w=1000&auto=format&fit=crop';
+  } 
+  
+  if (
+    readme.includes('api') || 
+    topics.includes('api') || 
+    repoName.includes('api')
+  ) {
+    return 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000&auto=format&fit=crop';
+  }
+  
+  // Default technical/coding image if no specific match
   return defaultImage;
 };
 
@@ -124,7 +185,7 @@ const ProjectsSection = () => {
   return (
     <section className="py-20" id="projects">
       <div className="container">
-        <h2 className="text-3xl font-bold mb-8">{sectionTitle}</h2>
+        <h2 className="text-3xl font-bold mb-8 gradient-text">{sectionTitle}</h2>
         
         {isLoading ? (
           <div className="flex justify-center items-center py-20">

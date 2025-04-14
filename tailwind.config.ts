@@ -70,9 +70,13 @@ export default {
           "card-hover": "#2A2A2A",
           border: "#333333",
           text: "#FFFFFF",
-          "text-secondary": "#AAAAAA",
-          accent: "#E0E0E0",
+          "text-secondary": "#CCCCCC", // Lightened for better readability
+          accent: "#e0c3fc", // Updated to match gradient
         },
+        gradient: {
+          start: "#e0c3fc", 
+          end: "#8ec5fc",
+        }
       },
       borderRadius: {
         lg: "var(--radius)",
