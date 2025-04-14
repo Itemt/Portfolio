@@ -50,9 +50,15 @@ const BentoCard = ({
             className="object-cover w-full h-full rounded-xl" 
             loading="lazy"
             onError={(e) => {
-              // Fallback if image fails to load
+              // Fallback if image fails to load - use generic code image
               const target = e.target as HTMLImageElement;
-              target.src = 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop';
+              const fallbackImages = [
+                'https://images.unsplash.com/photo-1562813733-b31f71025d54?q=80&w=1000&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=1000&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?q=80&w=1000&auto=format&fit=crop'
+              ];
+              const randomIndex = Math.floor(Math.random() * fallbackImages.length);
+              target.src = fallbackImages[randomIndex];
             }}
           />
         </div>

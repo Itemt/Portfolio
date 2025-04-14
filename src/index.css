@@ -37,7 +37,7 @@
   }
 
   body {
-    @apply bg-mono-background text-mono-text bg-gradient-to-br from-[#1a1a2e] via-[#16213e] to-[#0f3460] min-h-screen;
+    @apply bg-mono-background text-mono-text bg-gradient-to-br from-[#1a1c6e] via-[#16213e] to-[#0f3460] min-h-screen;
   }
   
   html {
@@ -139,4 +139,5 @@
 #skills .skill-icon:nth-child(7) { animation-delay: 0.4s; }
 #skills .skill-icon:nth-child(8) { animation-delay: 0.45s; }
 #skills .skill-icon:nth-child(9) { animation-delay: 0.5s; }
+
 

@@ -29,7 +29,7 @@ const fetchGithubRepos = async () => {
         const readmeResponse = await fetch(`https://api.github.com/repos/Itemt/${repo.name}/readme`);
         if (readmeResponse.ok) {
           const readmeData = await readmeResponse.json();
-          const decodedContent = atob(readmeData.content);
+          const decodedContent = decodeURIComponent(escape(atob(readmeData.content)));
           return { ...repo, readme: decodedContent };
         }
       } catch (error) {
@@ -42,100 +42,134 @@ const fetchGithubRepos = async () => {
   return reposWithReadme;
 };
 
-// Helper function to get a themed image URL based on repository content
-const getRepoImageUrl = (repo: Repository) => {
+// Get a themed image URL based on repository content with more varied image options
+const getRepoImageUrl = (repo: Repository, index: number) => {
   // If no repo information, return a generic coding image
   if (!repo) return 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop';
   
-  const defaultImage = 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop';
+  // Collection of technology-specific images
+  const imageCollection = {
+    generic: [
+      'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1562813733-b31f71025d54?q=80&w=1000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=1000&auto=format&fit=crop'
+    ],
+    react: [
+      'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=1000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?q=80&w=1000&auto=format&fit=crop'
+    ],
+    python: [
+      'https://images.unsplash.com/photo-1649180556628-9ba704115795?q=80&w=1000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1526379879527-8559ecfd8bf7?q=80&w=1000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1000&auto=format&fit=crop'
+    ],
+    javascript: [
+      'https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=1000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1627398242454-45a1465c2479?q=80&w=1000&auto=format&fit=crop'
+    ],
+    typescript: [
+      'https://images.unsplash.com/photo-1599507593499-a3f7d7d97667?q=80&w=1000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1599507593473-478d9a15064d?q=80&w=1000&auto=format&fit=crop'
+    ],
+    backend: [
+      'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=1000&auto=format&fit=crop'
+    ],
+    database: [
+      'https://images.unsplash.com/photo-1654277041218-84424c78f0ae?q=80&w=1000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=1000&auto=format&fit=crop'
+    ],
+    dotnet: [
+      'https://images.unsplash.com/photo-1599507593499-a3f7d7d97667?q=80&w=1000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1555066931-bf19f8fd1085?q=80&w=1000&auto=format&fit=crop'
+    ],
+    web: [
+      'https://images.unsplash.com/photo-1581276879432-15e50529f34b?q=80&w=1000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1581276879432-e80fae0891c0?q=80&w=1000&auto=format&fit=crop'
+    ],
+    api: [
+      'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1560472355-536de3962603?q=80&w=1000&auto=format&fit=crop'
+    ],
+    mobile: [
+      'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?q=80&w=1000&auto=format&fit=crop'
+    ],
+    game: [
+      'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1590422749897-47c77ee07a0b?q=80&w=1000&auto=format&fit=crop'
+    ],
+    ai: [
+      'https://images.unsplash.com/photo-1677442136019-21780ecad696?q=80&w=1000&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1676277791406-8cc70af16ab8?q=80&w=1000&auto=format&fit=crop'
+    ]
+  };
   
-  // Check repository content to determine the most relevant image
   const readme = repo.readme?.toLowerCase() || '';
   const topics = repo.topics?.map(t => t.toLowerCase()) || [];
   const repoName = repo.name.toLowerCase();
   const language = repo.language?.toLowerCase() || '';
   
-  // Technology-specific images
-  if (
-    readme.includes('react') || 
-    topics.includes('react') || 
-    repoName.includes('react')
-  ) {
-    return 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=1000&auto=format&fit=crop';
-  } 
-  
-  if (
-    readme.includes('python') || 
-    topics.includes('python') || 
-    repoName.includes('python') || 
-    language === 'python'
-  ) {
-    return 'https://images.unsplash.com/photo-1649180556628-9ba704115795?q=80&w=1000&auto=format&fit=crop';
-  } 
-  
-  if (
-    readme.includes('node') || 
-    topics.includes('node') || 
-    repoName.includes('node') ||
-    language === 'javascript'
-  ) {
-    return 'https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=1000&auto=format&fit=crop';
-  } 
-  
-  if (
-    readme.includes('typescript') || 
-    topics.includes('typescript') || 
-    repoName.includes('typescript') ||
-    language === 'typescript'
-  ) {
-    return 'https://images.unsplash.com/photo-1599507593499-a3f7d7d97667?q=80&w=1000&auto=format&fit=crop';
-  } 
-  
-  if (
-    readme.includes('docker') || 
-    topics.includes('docker') || 
-    repoName.includes('docker')
-  ) {
-    return 'https://images.unsplash.com/photo-1600267185393-e158a98703de?q=80&w=1000&auto=format&fit=crop';
-  } 
-  
-  if (
-    readme.includes('database') || 
-    readme.includes('sql') || 
-    topics.includes('database') || 
-    topics.includes('sql')
-  ) {
-    return 'https://images.unsplash.com/photo-1654277041218-84424c78f0ae?q=80&w=1000&auto=format&fit=crop';
-  } 
-  
-  if (
-    readme.includes('.net') || 
-    topics.includes('.net') || 
-    repoName.includes('.net') ||
-    language === 'c#'
-  ) {
-    return 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000&auto=format&fit=crop';
+  // Look for specific project indicators in readme and other metadata
+  if (readme.includes('juego') || readme.includes('game') || 
+      topics.includes('game') || repoName.includes('game')) {
+    return imageCollection.game[index % imageCollection.game.length];
   }
   
-  if (
-    readme.includes('web') || 
-    topics.includes('web') || 
-    repoName.includes('web') ||
-    language === 'html'
-  ) {
-    return 'https://images.unsplash.com/photo-1581276879432-15e50529f34b?q=80&w=1000&auto=format&fit=crop';
+  if (readme.includes('móvil') || readme.includes('mobile') || 
+      readme.includes('android') || readme.includes('ios') ||
+      topics.includes('mobile') || repoName.includes('mobile')) {
+    return imageCollection.mobile[index % imageCollection.mobile.length];
+  }
+  
+  if (readme.includes('ai') || readme.includes('artificial intelligence') || 
+      readme.includes('machine learning') || readme.includes('inteligencia artificial') ||
+      topics.includes('ai') || topics.includes('machine-learning')) {
+    return imageCollection.ai[index % imageCollection.ai.length];
+  }
+  
+  // Technology-specific images
+  if (readme.includes('react') || topics.includes('react') || repoName.includes('react')) {
+    return imageCollection.react[index % imageCollection.react.length];
   } 
   
-  if (
-    readme.includes('api') || 
-    topics.includes('api') || 
-    repoName.includes('api')
-  ) {
-    return 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000&auto=format&fit=crop';
+  if (readme.includes('python') || topics.includes('python') || 
+      repoName.includes('python') || language === 'python') {
+    return imageCollection.python[index % imageCollection.python.length];
+  } 
+  
+  if (readme.includes('node') || topics.includes('node') || 
+      repoName.includes('node') || language === 'javascript') {
+    return imageCollection.javascript[index % imageCollection.javascript.length];
+  } 
+  
+  if (readme.includes('typescript') || topics.includes('typescript') || 
+      repoName.includes('typescript') || language === 'typescript') {
+    return imageCollection.typescript[index % imageCollection.typescript.length];
+  } 
+  
+  if (readme.includes('.net') || topics.includes('.net') || 
+      repoName.includes('.net') || language === 'c#') {
+    return imageCollection.dotnet[index % imageCollection.dotnet.length];
+  }
+  
+  if (readme.includes('database') || readme.includes('sql') || 
+      readme.includes('base de datos') || topics.includes('database') || 
+      topics.includes('sql')) {
+    return imageCollection.database[index % imageCollection.database.length];
+  } 
+  
+  if (readme.includes('web') || topics.includes('web') || 
+      repoName.includes('web') || language === 'html') {
+    return imageCollection.web[index % imageCollection.web.length];
+  } 
+  
+  if (readme.includes('api') || topics.includes('api') || repoName.includes('api')) {
+    return imageCollection.backend[index % imageCollection.backend.length];
   }
   
   // Default technical/coding image if no specific match
-  return defaultImage;
+  return imageCollection.generic[index % imageCollection.generic.length];
 };
 
 const ProjectsSection = () => {
@@ -205,7 +239,7 @@ const ProjectsSection = () => {
                 description={getDescription(repo)}
                 tags={repo.topics?.length > 0 ? repo.topics : [repo.language || 'Code']}
                 featured={index < 2}
-                imageUrl={getRepoImageUrl(repo)}
+                imageUrl={getRepoImageUrl(repo, index)} // Pass index to get varied images
                 link={repo.html_url}
                 stars={repo.stargazers_count}
               />
