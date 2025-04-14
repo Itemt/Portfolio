@@ -33,11 +33,11 @@ const Footer = () => {
               {t.contactDescription}
             </p>
             <a
-              href="mailto:contact@example.com"
+              href="mailto:crisrague1@gmail.com"
               className="inline-flex items-center px-6 py-3 bg-mono-surface border border-mono-border rounded-lg hover:bg-mono-card transition-colors"
             >
               <Mail className="mr-2 h-5 w-5" />
-              contact@example.com
+              crisrague1@gmail.com
             </a>
           </div>
           
@@ -45,7 +45,7 @@ const Footer = () => {
             <h2 className="text-2xl font-bold mb-4">{t.connect}</h2>
             <div className="flex space-x-4">
               <a 
-                href="https://github.com" 
+                href="https://github.com/itemt" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-3 bg-mono-surface rounded-full hover:bg-mono-card transition-colors"
@@ -53,7 +53,7 @@ const Footer = () => {
                 <Github className="h-6 w-6" />
               </a>
               <a 
-                href="https://linkedin.com" 
+                href="https://www.linkedin.com/in/cristian-andrés-ramos-588a40285/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-3 bg-mono-surface rounded-full hover:bg-mono-card transition-colors"
@@ -61,7 +61,7 @@ const Footer = () => {
                 <Linkedin className="h-6 w-6" />
               </a>
               <a 
-                href="mailto:contact@example.com"
+                href="mailto:crisrague1@gmail.com"
                 className="p-3 bg-mono-surface rounded-full hover:bg-mono-card transition-colors"
               >
                 <Mail className="h-6 w-6" />
