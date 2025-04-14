@@ -10,14 +10,12 @@ const Footer = () => {
     en: {
       contact: "Contact",
       contactDescription: "I am currently available for freelance work and full-time positions. If you have a project that needs creative engineering, I would love to hear more about it.",
-      connect: "Connect",
-      footerNote: "Developed with React, TypeScript, and TailwindCSS"
+      connect: "Connect"
     },
     es: {
       contact: "Contacto",
       contactDescription: "Actualmente estoy disponible para trabajo freelance y posiciones a tiempo completo. Si tienes un proyecto que necesita ingeniería creativa, me encantaría saber más.",
-      connect: "Conectar",
-      footerNote: "Desarrollado con React, TypeScript, y TailwindCSS"
+      connect: "Conectar"
     }
   };
 
@@ -68,10 +66,6 @@ const Footer = () => {
               </a>
             </div>
           </div>
-        </div>
-        
-        <div className="mt-12 pt-6 border-t border-mono-border text-center text-mono-text-secondary">
-          <p>© {new Date().getFullYear()} - {t.footerNote}</p>
         </div>
       </div>
     </footer>
