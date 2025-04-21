@@ -4,11 +4,13 @@ import { Button } from "@/components/ui/button";
 import { Globe, Menu, X } from "lucide-react";
 import { useLanguage } from '@/contexts/LanguageContext';
 import { cn } from '@/lib/utils';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Header = () => {
   const { language, toggleLanguage } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isMobile = useIsMobile();
 
   const texts = {
     en: {
@@ -47,7 +49,8 @@ const Header = () => {
     <>
       <header className={cn(
         "py-4 fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled ? "backdrop-blur-md bg-mono-background/70 shadow-md" : ""
+        scrolled && !mobileMenuOpen ? "backdrop-blur-md bg-mono-background/70 shadow-md" : "",
+        mobileMenuOpen ? "bg-mono-background shadow-md" : ""
       )}>
         <div className="container">
           {/* Desktop header content */}
@@ -55,7 +58,8 @@ const Header = () => {
             <h1 className="text-2xl font-bold">
               <span className={cn(
                 "transition-colors",
-                scrolled ? "gradient-text" : ""
+                scrolled && !mobileMenuOpen ? "gradient-text" : "",
+                mobileMenuOpen ? "text-white" : ""
               )}>
                 {t.title}
               </span>
@@ -106,7 +110,7 @@ const Header = () => {
       {/* Mobile menu - now outside the header */}
       <div 
         className={cn(
-          "fixed top-[72px] left-0 right-0 bg-mono-background/95 backdrop-blur-md border-t border-mono-border/20 md:hidden transition-transform duration-300 z-40",
+          "fixed top-[72px] left-0 right-0 bg-mono-background border-t border-mono-border/20 md:hidden transition-transform duration-300 z-40",
           mobileMenuOpen ? "translate-y-0" : "-translate-y-full"
         )}
       >
@@ -141,18 +145,20 @@ const Header = () => {
                 </a>
               </li>
             </ul>
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="flex items-center gap-2 w-full justify-center bg-mono-text text-mono-background hover:bg-mono-accent hover:text-mono-background border-mono-border/50" 
-              onClick={() => {
-                toggleLanguage();
-                setMobileMenuOpen(false);
-              }}
-            >
-              <Globe size={16} />
-              {t.switchLanguage}
-            </Button>
+            {isMobile && (
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="flex items-center gap-2 w-full justify-center bg-mono-text text-mono-background hover:bg-mono-accent hover:text-mono-background border-mono-border/50" 
+                onClick={() => {
+                  toggleLanguage();
+                  setMobileMenuOpen(false);
+                }}
+              >
+                <Globe size={16} />
+                {t.switchLanguage}
+              </Button>
+            )}
           </nav>
         </div>
       </div>
