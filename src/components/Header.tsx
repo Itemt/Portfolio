@@ -102,12 +102,12 @@ const Header = () => {
         
         {/* Mobile navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pt-4 border-t border-mono-border/20 animate-fade-in">
+          <div className="md:hidden mt-4 pt-4 border-t border-mono-border/20 animate-fade-in bg-mono-background/90 backdrop-blur-md py-4 rounded-lg">
             <ul className="flex flex-col space-y-4 mb-4">
               <li>
                 <a 
                   href="#projects" 
-                  className="hover:text-mono-accent transition-colors block py-1"
+                  className="hover:text-mono-accent transition-colors block py-1 px-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {t.projects}
@@ -116,7 +116,7 @@ const Header = () => {
               <li>
                 <a 
                   href="#skills" 
-                  className="hover:text-mono-accent transition-colors block py-1"
+                  className="hover:text-mono-accent transition-colors block py-1 px-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {t.skills}
@@ -125,7 +125,7 @@ const Header = () => {
               <li>
                 <a 
                   href="#contact" 
-                  className="hover:text-mono-accent transition-colors block py-1"
+                  className="hover:text-mono-accent transition-colors block py-1 px-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {t.contact}
