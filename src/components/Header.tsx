@@ -107,7 +107,7 @@ const Header = () => {
         </div>
       </header>
       
-      {/* Mobile menu - now outside the header */}
+      {/* Mobile menu - outside the header */}
       <div 
         className={cn(
           "fixed top-[72px] left-0 right-0 bg-mono-background border-t border-mono-border/20 md:hidden transition-transform duration-300 z-40",
@@ -145,20 +145,18 @@ const Header = () => {
                 </a>
               </li>
             </ul>
-            {isMobile && (
-              <Button 
-                variant="outline" 
-                size="sm" 
-                className="flex items-center gap-2 w-full justify-center bg-mono-text text-mono-background hover:bg-mono-accent hover:text-mono-background border-mono-border/50" 
-                onClick={() => {
-                  toggleLanguage();
-                  setMobileMenuOpen(false);
-                }}
-              >
-                <Globe size={16} />
-                {t.switchLanguage}
-              </Button>
-            )}
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="flex items-center gap-2 w-full justify-center bg-mono-text text-mono-background hover:bg-mono-accent hover:text-mono-background border-mono-border/50" 
+              onClick={() => {
+                toggleLanguage();
+                setMobileMenuOpen(false);
+              }}
+            >
+              <Globe size={16} />
+              {t.switchLanguage}
+            </Button>
           </nav>
         </div>
       </div>
