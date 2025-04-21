@@ -50,7 +50,7 @@ const Header = () => {
       <header className={cn(
         "py-4 fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         scrolled && !mobileMenuOpen ? "backdrop-blur-md bg-mono-background/70 shadow-md" : "",
-        mobileMenuOpen ? "bg-mono-background shadow-md" : ""
+        mobileMenuOpen ? "bg-black shadow-md" : ""
       )}>
         <div className="container">
           {/* Desktop header content */}
@@ -110,7 +110,7 @@ const Header = () => {
       {/* Mobile menu - outside the header */}
       <div 
         className={cn(
-          "fixed top-[72px] left-0 right-0 bg-mono-background border-t border-mono-border/20 md:hidden transition-transform duration-300 z-40",
+          "fixed top-[72px] left-0 right-0 bg-black border-t border-mono-border/20 md:hidden transition-transform duration-300 z-40",
           mobileMenuOpen ? "translate-y-0" : "-translate-y-full"
         )}
       >
@@ -120,7 +120,7 @@ const Header = () => {
               <li>
                 <a 
                   href="#projects" 
-                  className="hover:text-mono-accent transition-colors block py-1 px-2"
+                  className="text-white hover:text-mono-accent transition-colors block py-1 px-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {t.projects}
@@ -129,7 +129,7 @@ const Header = () => {
               <li>
                 <a 
                   href="#skills" 
-                  className="hover:text-mono-accent transition-colors block py-1 px-2"
+                  className="text-white hover:text-mono-accent transition-colors block py-1 px-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {t.skills}
@@ -138,7 +138,7 @@ const Header = () => {
               <li>
                 <a 
                   href="#contact" 
-                  className="hover:text-mono-accent transition-colors block py-1 px-2"
+                  className="text-white hover:text-mono-accent transition-colors block py-1 px-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {t.contact}
