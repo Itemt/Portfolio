@@ -60,8 +60,12 @@ const Hero = () => {
               </a>
             </div>
           </div>
-          <Avatar className="w-24 h-24 md:w-32 md:h-32 border-2 border-mono-accent/30">
-            <AvatarImage src="https://avatars.githubusercontent.com/u/83793415?v=4" alt="Cristian Andrés Ramos" />
+          <Avatar className="w-16 sm:w-24 md:w-32 h-16 sm:h-24 md:h-32 border-2 border-mono-accent/30">
+            <AvatarImage 
+              src="https://avatars.githubusercontent.com/u/94144066?v=4" 
+              alt="Cristian Andrés Ramos" 
+              className="object-cover"
+            />
             <AvatarFallback>CR</AvatarFallback>
           </Avatar>
         </div>
@@ -76,3 +80,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
