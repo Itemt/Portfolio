@@ -33,8 +33,8 @@ const Hero = () => {
       <div className="absolute bottom-1/3 left-1/3 w-48 h-48 bg-[#9b87f5]/5 rounded-full blur-3xl"></div>
       
       <div className="container relative">
-        <div className="flex flex-col sm:flex-row justify-between items-center sm:items-start max-w-3xl animate-slide-up">
-          <div className="w-full sm:max-w-2xl mb-8 sm:mb-0">
+        <div className="flex flex-row items-center justify-between max-w-4xl animate-slide-up">
+          <div className="w-full max-w-2xl pr-4">
             <span className="text-mono-accent text-xs sm:text-sm tracking-wider mb-2 inline-block">PORTFOLIO</span>
             <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-2 gradient-text">
               {t.title}
@@ -60,8 +60,9 @@ const Hero = () => {
               </a>
             </div>
           </div>
-          <div className="mt-4 sm:mt-0 sm:ml-8">
-            <Avatar className="w-20 sm:w-24 md:w-32 h-20 sm:h-24 md:h-32 border-2 border-mono-accent/30">
+          
+          <div className="hidden sm:block">
+            <Avatar className="w-24 md:w-32 h-24 md:h-32 border-2 border-mono-accent/30">
               <AvatarImage 
                 src="/lovable-uploads/9830d472-09c1-4be8-9b8d-d798f0077344.png"
                 alt="Cristian Andrés Ramos" 
@@ -70,6 +71,18 @@ const Hero = () => {
               <AvatarFallback>CR</AvatarFallback>
             </Avatar>
           </div>
+        </div>
+        
+        {/* Mobile profile photo positioned below text */}
+        <div className="flex justify-center sm:hidden mt-6">
+          <Avatar className="w-20 h-20 border-2 border-mono-accent/30">
+            <AvatarImage 
+              src="/lovable-uploads/9830d472-09c1-4be8-9b8d-d798f0077344.png"
+              alt="Cristian Andrés Ramos" 
+              className="object-cover"
+            />
+            <AvatarFallback>CR</AvatarFallback>
+          </Avatar>
         </div>
         
         {/* Centered scroll indicator */}
