@@ -48,7 +48,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 sm:space-x-4">
               <a
                 href="#projects"
-                className="inline-block px-6 py-3 bg-mono-surface/70 backdrop-blur-sm border border-mono-border/50 rounded-lg hover:bg-mono-card hover:border-mono-accent/30 transition-all hover:shadow-lg hover:shadow-mono-accent/5 text-center"
+                className="inline-block px-6 py-3 bg-mono-surface/70 backdrop-blur-xs border border-mono-border/50 rounded-lg hover:bg-mono-card hover:border-mono-accent/30 transition-all hover:shadow-lg hover:shadow-mono-accent/5 text-center"
               >
                 {t.viewProjects}
               </a>
