@@ -1,7 +1,176 @@
+@import 'tailwindcss';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@plugin 'tailwindcss-animate';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-sidebar: hsl(var(--sidebar-background));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  --color-mono-background: #121212;
+  --color-mono-surface: #1e1e1e;
+  --color-mono-card: #252525;
+  --color-mono-card-hover: #2a2a2a;
+  --color-mono-border: #333333;
+  --color-mono-text: #ffffff;
+  --color-mono-text-secondary: #cccccc;
+  --color-mono-accent: #e0c3fc;
+
+  --color-gradient-start: #e0c3fc;
+  --color-gradient-end: #8ec5fc;
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-fade-in: fadeIn 0.5s ease-out forwards;
+  --animate-slide-up: slideUp 0.5s ease-out forwards;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+
+  @media (width >= theme(--breakpoint-md)) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (width >= theme(--breakpoint-lg)) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(200px, auto);
+  }
+}
+
+@utility bento-item {
+  @apply relative bg-mono-card/80 backdrop-blur-xs rounded-xl border border-mono-border/50 transition-all duration-300 overflow-hidden hover:border-mono-accent/50 hover:shadow-lg hover:shadow-mono-accent/5;
+
+  &.featured {
+    @apply md:col-span-2 md:row-span-2;
+  }
+}
+
+@utility featured {
+  &.bento-item {
+    @apply md:col-span-2 md:row-span-2;
+  }
+}
+
+@utility skill-icon {
+  @apply flex flex-col items-center justify-center gap-2 p-5 bg-mono-surface/70 backdrop-blur-xs rounded-lg border border-mono-border/30 transition-all hover:scale-105 hover:bg-mono-surface hover:border-mono-accent/30 hover:shadow-lg hover:shadow-mono-accent/10;
+}
+
+@utility gradient-text {
+  @apply bg-clip-text text-transparent bg-linear-to-r from-[#e0c3fc] to-[#8ec5fc];
+}
+
+@utility glow {
+  box-shadow: 0 0 15px 2px rgba(224, 224, 224, 0.1);
+}
+
+@utility glow-accent {
+  box-shadow: 0 0 20px 5px rgba(224, 224, 224, 0.05);
+}
 
 @layer base {
   :root {
@@ -37,7 +206,7 @@
   }
 
   body {
-    @apply bg-mono-background text-mono-text bg-gradient-to-br from-[#1a1c6e] via-[#16213e] to-[#0f3460] min-h-screen;
+    @apply bg-mono-background text-mono-text bg-linear-to-br from-[#1a1c6e] via-[#16213e] to-[#0f3460] min-h-screen;
   }
   
   html {
@@ -46,51 +215,6 @@
   
   ::selection {
     @apply bg-mono-accent/30 text-mono-text;
-  }
-}
-
-@layer components {
-  .bento-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-  }
-
-  @screen md {
-    .bento-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @screen lg {
-    .bento-grid {
-      grid-template-columns: repeat(3, 1fr);
-      grid-auto-rows: minmax(200px, auto);
-    }
-  }
-
-  .bento-item {
-    @apply relative bg-mono-card/80 backdrop-blur-sm rounded-xl border border-mono-border/50 transition-all duration-300 overflow-hidden hover:border-mono-accent/50 hover:shadow-lg hover:shadow-mono-accent/5;
-  }
-
-  .bento-item.featured {
-    @apply md:col-span-2 md:row-span-2;
-  }
-
-  .skill-icon {
-    @apply flex flex-col items-center justify-center gap-2 p-5 bg-mono-surface/70 backdrop-blur-sm rounded-lg border border-mono-border/30 transition-all hover:scale-105 hover:bg-mono-surface hover:border-mono-accent/30 hover:shadow-lg hover:shadow-mono-accent/10;
-  }
-  
-  .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#e0c3fc] to-[#8ec5fc];
-  }
-  
-  .glow {
-    box-shadow: 0 0 15px 2px rgba(224, 224, 224, 0.1);
-  }
-  
-  .glow-accent {
-    box-shadow: 0 0 20px 5px rgba(224, 224, 224, 0.05);
   }
 }
 

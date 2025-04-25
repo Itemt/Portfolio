@@ -11,13 +11,13 @@ const Footer = () => {
       contact: "Contact",
       contactDescription: "I am currently available for freelance work and full-time positions. If you have a project that needs creative engineering, I would love to hear more about it.",
       connect: "Connect",
-      studentInfo: "2025 - Systems Engineering Student - Research and Development University - UDI"
+      studentInfo: "Systems Engineering Student - Research and Development University - UDI"
     },
     es: {
       contact: "Contacto",
       contactDescription: "Actualmente estoy disponible para trabajo freelance y posiciones a tiempo completo. Si tienes un proyecto que necesita ingeniería creativa, me encantaría saber más.",
       connect: "Conectar",
-      studentInfo: "2025 - Estudiante de Ingeniería de Sistemas - Universidad de Investigación y Desarrollo - UDI"
+      studentInfo: "Estudiante de Ingeniería de Sistemas - Universidad de Investigación y Desarrollo - UDI"
     }
   };
 

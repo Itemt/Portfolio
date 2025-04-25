@@ -40,7 +40,7 @@ const BentoCard = ({
         className
       )}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-mono-card/80 via-mono-card/70 to-transparent z-10"></div>
+      <div className="absolute inset-0 bg-linear-to-br from-mono-card/80 via-mono-card/70 to-transparent z-10"></div>
       
       {imageUrl && (
         <div className="absolute inset-0 opacity-25 group-hover:opacity-35 transition-opacity duration-300">
@@ -77,14 +77,14 @@ const BentoCard = ({
           )}
         </div>
         
-        <p className="text-mono-text-secondary mb-4 flex-grow">{description}</p>
+        <p className="text-mono-text-secondary mb-4 grow">{description}</p>
         
         <div className="mt-auto">
           <div className="flex flex-wrap gap-2 mb-4">
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="text-xs px-3 py-1 rounded-full bg-mono-surface/70 backdrop-blur-sm text-mono-text-secondary hover:bg-mono-accent/20 transition-colors"
+                className="text-xs px-3 py-1 rounded-full bg-mono-surface/70 backdrop-blur-xs text-mono-text-secondary hover:bg-mono-accent/20 transition-colors"
               >
                 {tag}
               </span>

@@ -10,7 +10,7 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col relative">
       <Header />
-      <main className="flex-grow z-0">
+      <main className="grow z-0">
         <Hero />
         <ProjectsSection />
         <SkillsSection />
