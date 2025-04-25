@@ -33,13 +33,13 @@ const Hero = () => {
       <div className="absolute bottom-1/3 left-1/3 w-48 h-48 bg-[#9b87f5]/5 rounded-full blur-3xl"></div>
       
       <div className="container relative">
-        <div className="flex flex-row items-center justify-between max-w-4xl animate-slide-up">
+        <div className="flex flex-row items-start md:items-center justify-between max-w-4xl animate-slide-up mx-auto">
           <div className="w-full max-w-2xl pr-4">
             <span className="text-mono-accent text-xs sm:text-sm tracking-wider mb-2 inline-block">PORTFOLIO</span>
-            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-2 gradient-text">
+            <h1 className="text-3xl md:text-4xl font-bold mb-2 gradient-text">
               {t.title}
             </h1>
-            <h2 className="text-xl sm:text-2xl md:text-4xl font-bold mb-6 gradient-text">
+            <h2 className="text-xl md:text-2xl font-bold mb-6 gradient-text">
               {t.name}
             </h2>
             <p className="text-base sm:text-lg md:text-xl text-mono-text-secondary mb-8 max-w-2xl">
@@ -61,8 +61,8 @@ const Hero = () => {
             </div>
           </div>
           
-          <div className="hidden sm:block">
-            <Avatar className="w-24 md:w-32 h-24 md:h-32 border-2 border-mono-accent/30">
+          <div>
+            <Avatar className="size-20 mt-4 md:mt-0 md:w-32 md:h-32 border-2 border-mono-accent/30">
               <AvatarImage 
                 src="/lovable-uploads/9830d472-09c1-4be8-9b8d-d798f0077344.png"
                 alt="Cristian Andrés Ramos" 
@@ -71,18 +71,6 @@ const Hero = () => {
               <AvatarFallback>CR</AvatarFallback>
             </Avatar>
           </div>
-        </div>
-        
-        {/* Mobile profile photo positioned below text */}
-        <div className="flex justify-center sm:hidden mt-6">
-          <Avatar className="w-20 h-20 border-2 border-mono-accent/30">
-            <AvatarImage 
-              src="/lovable-uploads/9830d472-09c1-4be8-9b8d-d798f0077344.png"
-              alt="Cristian Andrés Ramos" 
-              className="object-cover"
-            />
-            <AvatarFallback>CR</AvatarFallback>
-          </Avatar>
         </div>
         
         {/* Centered scroll indicator */}

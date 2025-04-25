@@ -26,10 +26,10 @@ const Footer = () => {
   return (
     <footer className="py-12 border-t border-mono-border mt-24" id="contact">
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="flex flex-col items-start justify-around md:flex-row gap-8">
           <div>
             <h2 className="text-2xl font-bold mb-4">{t.contact}</h2>
-            <p className="text-mono-text-secondary mb-6">
+            <p className="text-mono-text-secondary mb-4 max-w-xl text-pretty">
               {t.contactDescription}
             </p>
             <a
